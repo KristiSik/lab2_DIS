@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -148,9 +154,36 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TransportationsController.cs" />
+    <Compile Include="Controllers\TransportCompaniesController.cs" />
+    <Compile Include="Controllers\TransportsController.cs" />
+    <Compile Include="EF\TransportsDbContext.cs" />
+    <Compile Include="EF\TransportsDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810071815354_InitialCreate.cs" />
+    <Compile Include="Migrations\201810071815354_InitialCreate.Designer.cs">
+      <DependentUpon>201810071815354_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810071845346_Init.cs" />
+    <Compile Include="Migrations\201810071845346_Init.Designer.cs">
+      <DependentUpon>201810071845346_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810071859049_Init2.cs" />
+    <Compile Include="Migrations\201810071859049_Init2.Designer.cs">
+      <DependentUpon>201810071859049_Init2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810171736318_I.cs" />
+    <Compile Include="Migrations\201810171736318_I.Designer.cs">
+      <DependentUpon>201810171736318_I.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CreateTransportViewModel.cs" />
+    <Compile Include="Models\Transport.cs" />
+    <Compile Include="Models\Transportation.cs" />
+    <Compile Include="Models\TransportationViewModel.cs" />
+    <Compile Include="Models\TransportCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,10 +225,24 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Transportations\Create.cshtml" />
+    <Content Include="Views\Transportations\Delete.cshtml" />
+    <Content Include="Views\Transportations\Details.cshtml" />
+    <Content Include="Views\Transportations\Edit.cshtml" />
+    <Content Include="Views\Transportations\Index.cshtml" />
+    <Content Include="Views\TransportCompanies\Create.cshtml" />
+    <Content Include="Views\TransportCompanies\Delete.cshtml" />
+    <Content Include="Views\TransportCompanies\Details.cshtml" />
+    <Content Include="Views\TransportCompanies\Edit.cshtml" />
+    <Content Include="Views\TransportCompanies\Index.cshtml" />
+    <Content Include="Views\Transports\Create.cshtml" />
+    <Content Include="Views\Transports\Delete.cshtml" />
+    <Content Include="Views\Transports\Details.cshtml" />
+    <Content Include="Views\Transports\Edit.cshtml" />
+    <Content Include="Views\Transports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -209,6 +256,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810071815354_InitialCreate.resx">
+      <DependentUpon>201810071815354_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071845346_Init.resx">
+      <DependentUpon>201810071845346_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071859049_Init2.resx">
+      <DependentUpon>201810071859049_Init2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810171736318_I.resx">
+      <DependentUpon>201810171736318_I.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
